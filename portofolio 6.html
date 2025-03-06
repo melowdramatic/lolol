@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's Ripai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 250px; /* Adjust to match the width of the side panel */
+            width: calc(100% - 250px); /* Adjust to match the width of the side panel */
+            height: 100%;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6lUh7_WNSOIcNkp0WaNFUZUPUSo-zjTlUg&s') no-repeat center center/cover;
+            opacity: 0.3; /* Adjust the opacity as needed */
+            z-index: -1;
+        }
+        .side-panel {
+            width: 250px;
+            background: linear-gradient(45deg, #430450, #3f61a6, #a65d5d, #7e88bf);
+            background-size: 400% 400%;
+            animation: gradientMove 5s ease infinite; /* Faster color change */
+            color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100%;
+            text-align: center;
+            left: 0; /* Ensure the side panel is positioned at the left */
+        }
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .side-panel img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .side-panel h1 {
+            margin: 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #fff;
+        }
+        .side-panel ul {
+            list-style: none;
+            padding: 0;
+        }
+        .side-panel ul li {
+            margin: 20px 0;
+        }
+        .side-panel ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .side-panel ul li a:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+        }
+        .side-panel ul li a.active {
+            color: #FFD700; /* Change to your desired active color */
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: calc(100% - 270px);
+            position: relative;
+        }
+        section {
+            display: none;
+            position: relative;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .title-box {
+            background: linear-gradient(45deg, #de87f0, #3f61a6, #a65d5d, #7e88bf);
+            background-size: 400% 400%;
+            animation: gradientMove 5s ease infinite; /* Faster color change */
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .title-box h2 {
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            margin-left: 10px;
+        }
+        p {
+            text-align: center;
+            line-height: 1.6;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .school-section img {
+            max-width: 30%; /* Adjust the size as needed */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .photo-section {
+            max-height: 400px; /* Adjust the height as needed */
+            overflow-y: auto;
+        }
+        .icon {
+            font-size: 24px;
+            color: #fff;
+        }
+        .about-section {
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+        }
+        .dreams-section {
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+        }
+        .photo-section {
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+        }
+        .school-section {
+            background: rgba(255, 255, 255, 0.8); /* Transparent background */
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="side-panel">
+        <img src="DSC_0688.jpg" alt="Profile Picture">
+        <h1>It's Ripai</h1>
+        <ul>
+            <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+            <li><a href="#dreams" onclick="showSection('dreams')">My Dreams</a></li>
+            <li><a href="#photo" onclick="showSection('photo')">Photo</a></li>
+            <li><a href="#school" onclick="showSection('school')">My School</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <section id="about" class="active about-section">
+            <div class="title-box">
+                <i class="fas fa-user icon"></i>
+                <h2>About Me</h2>
+            </div>
+            <p>Halo! nama saya Muhamad ripai dan saya adalah seseorang yang kreatif dan penuh imajinasi, dengan minat besar dalam desain dan seni. 
+                Menggunakan Canva sebagai alat utama, saya suka menciptakan desain yang menarik dan estetis, menggabungkan warna, bentuk, dan elemen visual dengan harmonis. 
+                Selain itu, saya juga gemar menggambar, menuangkan ide dan emosi ke dalam ilustrasi yang unik. Kombinasi antara desain digital dan gambar tangan membuat kreativitasmu semakin luas, memungkinkanmu untuk bereksplorasi dalam berbagai gaya dan konsep. 
+                Dengan semangat dan dedikasi, saya terus mengasah keterampilan ini, menciptakan karya yang mencerminkan kepribadian dan visi artistik saya.
+            </p>
+        </section>
+
+        <section id="dreams" class="dreams-section">
+            <div class="title-box">
+                <i class="fas fa-dream icon"></i>
+                <h2>My Dreams</h2>
+            </div>
+            <p>Saya bercita-cita menjadi seorang graphic designer, menggunakan Canva sebagai alat utama untuk menuangkan kreativitas saya. Bagi saya, desain bukan hanya sekadar pekerjaan, tetapi juga cara untuk bercerita dan menyampaikan emosi melalui warna, bentuk, dan komposisi visual. Dengan Canva, saya merasa bebas untuk bereksplorasi, menciptakan desain yang menarik, estetik, dan bermakna.
+                Meskipun latar belakang saya di Teknik Komputer dan Jaringan (TKJ), saya tidak membiarkan itu membatasi impian saya. Sebaliknya, saya melihatnya sebagai kelebihan—menggabungkan pemahaman teknis dengan kreativitas desain. Saya ingin terus mengasah keterampilan, belajar lebih banyak tentang komposisi visual, tipografi, dan tren desain agar bisa menghasilkan karya yang semakin profesional.
+                Ke depan, saya berharap bisa bekerja sebagai graphic designer atau bahkan membangun brand desain sendiri, di mana saya bisa menciptakan karya yang tidak hanya keren secara visual tetapi juga memiliki makna dan cerita di baliknya.
+            </p>
+        </section>
+
+        <section id="photo" class="photo-section">
+            <div class="title-box">
+                <i class="fas fa-camera icon"></i>
+                <h2>Photo</h2>
+            </div>
+            <img src="WhatsApp Image 2025-02-13 at 10.58.30_db75ad66.jpg" alt="My Photo">
+        </section>
+
+        <section id="school" class="school-section">
+            <div class="title-box">
+                <i class="fas fa-school icon"></i>
+                <h2>My School</h2>
+            </div>
+            <img src="WhatsApp Image 2025-03-06 at 08.13.05_0b131b51.jpg" alt="My School">
+            <p>SMK Negeri 1 Balikpapan, yang dikenal dengan sebutan "Smakenza", adalah sekolah menengah kejuruan negeri yang berlokasi di Jalan Marsma R. Iswahyudi No. 01, Sepinggan Raya, Balikpapan Selatan, Kota Balikpapan, Kalimantan Timur. Sekolah ini memiliki motto "Unggul - Berkarakter - Kompeten", mencerminkan komitmennya dalam menghasilkan lulusan yang berkualitas, berintegritas, dan profesional. 
+                Di bawah kepemimpinan Kepala Sekolah Mujadi, S.Pd., M.Pd., SMK Negeri 1 Balikpapan menawarkan berbagai program keahlian yang dirancang untuk memenuhi kebutuhan dunia industri dan bisnis. Salah satu program unggulannya adalah Teknik Komputer dan Jaringan (TKJ), yang mempersiapkan siswa dengan keterampilan di bidang teknologi informasi dan komunikasi. 
+                Selain fokus pada pengembangan akademik dan keterampilan teknis, SMK Negeri 1 Balikpapan juga aktif dalam berbagai kegiatan ekstrakurikuler. Pada tahun 2024, tim eSports sekolah ini berhasil meraih prestasi gemilang dengan memenangkan Liga Pelajar Road to Garena Youth Championship 2024 dalam kategori permainan Free Fire. 
+                Untuk informasi lebih lanjut mengenai program studi, kegiatan, dan berita terbaru, Anda dapat mengunjungi situs resmi SMK Negeri 1 Balikpapan di 
+                .</p>
+        </section>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.side-panel ul li a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.side-panel ul li a[href="#${sectionId}"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
